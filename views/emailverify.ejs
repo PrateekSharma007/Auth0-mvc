@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Email Verification</title>
+</head>
+<body>
+    <div>
+        <h1>Please verify your email</h1>
+        <p>You need to verify your email before you can log in again.</p>
+        <a href="http://localhost:3000/logout">Login</a>
+        <button id="resend-email-button">Resend Verification Email</button>
+        
+        
+    </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+          const resendButton = document.getElementById('resend-email-button');
+        
+          resendButton.addEventListener('click', async () => {
+            try {
+    
+              
+              const response = await fetch('/resend-verification-email', {
+                method: 'POST',
+                headers: {
+                  'Content-Type': 'application/json',
+                  'Accept': 'application/json',
+              
+                
+                },
+              });
+        
+              if (response.ok) {
+              
+                console.log('Verification email resent successfully.');
+              } else {
+                
+                console.error('Error resending verification email.');
+              }
+            } catch (error) {
+              // Handle network or other errors
+              console.error('An error occurred:', error);
+            }
+          });
+        });
+        </script>
+        
+</body>
+</html>

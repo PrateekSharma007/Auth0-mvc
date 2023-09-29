@@ -2,6 +2,7 @@ const express = require("express") ;
 const axios = require("axios") ;
 const request = require("request") ;
 const { auth } = require('express-openid-connect');
+require('dotenv').config();
 
 
 
@@ -27,7 +28,6 @@ const authh = async (req,res) => {
           
           axios.request(config)
           .then((response) => {
-            // console.log(JSON.stringify(response.data));
             const access_token =response.data.token;
             let data = JSON.stringify({
               "email": req.oidc.user.email,
@@ -47,17 +47,12 @@ const authh = async (req,res) => {
             
             axios.request(config)
             .then((response) => {
-              // console.log(JSON.stringify(response.data));
               res.send(JSON.stringify(response.data))
             })
             .catch((error) => {
               res.status(401).json(error.message)
               console.log(error);
             });
-    
-    
-    
-            // res.send(response.data)
           }).catch((error) => {
             res.status(400).json(error.message)
             console.log(error);
@@ -90,9 +85,9 @@ const resend = async (req,res) => {
           headers: {'content-type': 'application/x-www-form-urlencoded'},
           data: new URLSearchParams({
             grant_type: 'client_credentials',
-            client_id: 'LHiFBez6fTgfaFSzVwV76NSVwFvz7vFu',
-            client_secret: 'rLS9lJStnM1O55iQhAFlGdRxTuuj-lP54vzDcV0vnETCwP9vt2d1YN7KrcxJBKtP',
-            audience: 'https://dev-8beoovnx71u7swwn.us.auth0.com/api/v2/'
+            client_id:process.env.clientID,
+            client_secret: process.env.clientsecret,
+            audience: process.env.audience
           })
         };
         

@@ -5,16 +5,17 @@ const router = require("./routes/route.js")
 const request = require("request");
 const { auth } = require('express-openid-connect');
 const { requiresAuth } = require('express-openid-connect');
+require('dotenv').config();
 
 
 
 const config = {
     authRequired: true,
     auth0Logout: true,
-    secret: 'a long, randomly-generated string stored in env',
-    baseURL: 'http://localhost:3000',
-    clientID: 'LHiFBez6fTgfaFSzVwV76NSVwFvz7vFu',
-    issuerBaseURL: 'https://dev-8beoovnx71u7swwn.us.auth0.com'
+    secret : process.env.secret,
+    baseURL : process.env.baseURL,
+    clientID : process.env.clientID,
+    issuerBaseURL : process.env.issuerBaseURL, 
   };
   
   

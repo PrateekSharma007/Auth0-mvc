@@ -47,7 +47,24 @@ const authh = async (req,res) => {
             
             axios.request(config)
             .then((response) => {
-              res.send(JSON.stringify(response.data))
+              
+
+              const responseMessage = "Congratulations you have successfully logged in!";
+              const responseData = response.data;
+
+              
+              const jsonResponse = {
+                message: responseMessage,
+                data: responseData
+              };
+
+          
+              res.json(jsonResponse);
+
+
+
+
+
             })
             .catch((error) => {
               res.status(401).json(error.message)
@@ -61,7 +78,9 @@ const authh = async (req,res) => {
     
       }
       else{
+        // resend() ;
         res.render("emailverify")
+        
       }} catch (error) {
     
         res.status(500).send(error);
@@ -78,7 +97,7 @@ const resend = async (req,res) => {
         const indexOfPipe = inputString.indexOf("|");
     
         const userid2 = inputString.slice(indexOfPipe + 1);
-        console.log(userid2)
+        // console.log(userid2)
         var options = {
           method: 'POST',
           url: 'https://dev-8beoovnx71u7swwn.us.auth0.com/oauth/token',
@@ -111,12 +130,14 @@ const resend = async (req,res) => {
           axios.request(options).then(function (response) {
             console.log(response.data);
         })
+        console.log(access_token) 
       })}catch(error) {
         console.error('Error sending verification email');
         res.status(500).send('Error sending verification email');
         res.send("error")  
       }
 }
+
 
 
 

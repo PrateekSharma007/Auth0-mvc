@@ -9,7 +9,7 @@
     <div>
         <h1>Please verify your email</h1>
         <p>You need to verify your email before you can log in again.</p>
-        <a href="http://localhost:3000">Login</a>
+        <a href="http://localhost:3000/logout">Login</a>
         <button id="resend-email-button">Resend Verification Email</button>
         
         
@@ -46,6 +46,34 @@
           });
         });
         </script>
+        <!-- <script src="https://cdn.auth0.com/js/auth0/9.11/auth0.min.js"></script>
+        <script type="text/javascript">
+          // Initialize app
+          var webAuth = new auth0.WebAuth({
+            domain:       'dev-8beoovnx71u7swwn.us.auth0.com',
+            clientID:     'LHiFBez6fTgfaFSzVwV76NSVwFvz7vFu',
+            redirect_uri : "https://google.com",
+            prompt: 'consent'
+          });
+        
+          auth0.login({
+      popup: true,  // to use popup and js callback or redirect with hashtag
+      connection: 'facebook',
+      state:"some_state",
+      scope: 'openid offline_access',
+      prompt: 'consent'
+    },
+    //if popup=true then will callback
+    function (err, profile, id_token, access_token, state, refreshToken) {
+      if (err) {
+        console.log("err", err);
+      } else {
+        console.log(id_token);
+      }
+    });
+        
+          
+          </script> -->
         
 </body>
 </html>

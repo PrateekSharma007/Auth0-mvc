@@ -6,10 +6,10 @@ const { requiresAuth } = require('express-openid-connect');
 const {auth} =require("express-openid-connect")
 
 
-router.get("/" , requiresAuth() , authh) ; 
+router.get("/" , requiresAuth() , authh) ;  // requiresAuth() is passed as an middleware here
 
 
-router.post("/resend-verification-email" ,requiresAuth() , resend) ;
+router.post("/resend-verification-email" ,requiresAuth() , resend) ; // requiresAuth() is passed as an middleware here
 
 
 

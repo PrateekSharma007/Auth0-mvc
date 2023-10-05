@@ -16,7 +16,10 @@ const config = {
     baseURL : process.env.baseURL,
     clientID : process.env.clientID,
     issuerBaseURL : process.env.issuerBaseURL, 
-  };
+
+  }; //initialised according to our credentials 
+  
+ 
   
   
 app.use(auth(config));
